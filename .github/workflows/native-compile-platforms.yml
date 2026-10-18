@@ -6,6 +6,13 @@ on:
     - 'templates/**'
     - 'native/**'
     - '.github/workflows/native-compile-platforms.yml'
+  workflow_dispatch:
+    inputs:
+      tags:
+        description: 'build tag'
+        required: false
+        type: boolean
+
 
 # github.head_ref is only defined on pull_request events
 concurrency:
