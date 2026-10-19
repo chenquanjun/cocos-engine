@@ -560,5 +560,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ios-${{ matrix.config.sdk }}-${{ matrix.config.arch }}
-          path: ${{ github.workspace }}/templates/ios/build-ios
+          path: ${{ github.workspace }}/native/ios
           retention-days: 7
