@@ -555,10 +555,17 @@ jobs:
           set +e
           #cmake --build . --config Debug -- -quiet -jobs $NUM_OF_CORES -allowProvisioningUpdates CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
           cmake --build . --config Debug -- -jobs $NUM_OF_CORES CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
+          
+          echo "=== list build‑ios ==="
+          ls -la $GITHUB_WORKSPACE/templates/ios/build-ios
+          echo "=== list build‑ios/build ==="
+          ls -la $GITHUB_WORKSPACE/templates/ios/build-ios/build
+          find $GITHUB_WORKSPACE/templates/ios/build-ios -name "*.a"
+
           echo "Compile iOS Done!"
       - name: Upload iOS Artifact
         uses: actions/upload-artifact@v4
         with:
           name: ios-${{ matrix.config.sdk }}-${{ matrix.config.arch }}
-          path: ${{ github.workspace }}/templates/ios/build-ios/Debug-${{ matrix.config.sdk }}
+          path: ${{ github.workspace }}/templates/ios/build-ios/build/Debug-${{ matrix.config.sdk }}
           retention-days: 7
